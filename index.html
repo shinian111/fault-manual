@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPB FA2 ST44/46 设备故障处理</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css";>
+    
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-tools"></i> IPB FA2 ST44/46 设备故障诊断与处理</h1>
+            <div class="subtitle">设备故障类别、失效项与处理措施</div>
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="搜索故障类别、失效项...">
+                </div>
+            </div>
+        </header>
+      <!-- 树结构 -->
+        <div class="content">
+            <div class="tree-container">
+                <h2 class="section-title"><i class="fas fa-sitemap"></i>故障分类树</h2>
+                <div class="no-results">未找到匹配的故障项</div>
+                <ul class="tree">
+                  <!-- 重点关注 -->
+                    <li>
+                        <div class="node" data-node="equipment-issues">
+                            <i class="fas fa-folder"></i>
+                            <span class="node-text">FTA-重点关注</span>
+                        </div>
+                        <ul>
+                          <!-- 1 铝丝/油壶工装-专项 (近期重点关注) -->
+                            <li>
+                        <div class="node" data-node="equipment-issues">
+                            <i class="fas fa-folder"></i>
+                            <span class="node-text">⭐铝丝/油壶工装-专项 (近期重点关注) </span>
+                        </div>
+                        <ul>
+                          <!-- 1 -->
+                            <li>
+                                <div class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="1 待复测件流转下去，再点Auto stop 开门 <br>
+                                                            2 无需拆工装，使用无尘布清洁PRV黑色密封圈后继续生产<br>
+                                                            3 无效后更换油壶工装<br>
+                                                            （更换Res工装如失效项发生变化，需要再更换一次备件工装(公共备件或其它产线备件)，优先使用验收过的工装，同时清洁Res工装在设备上的安装孔）<br>
+                                                            4 第1次换下来的工装整体清洁一遍，同时更换黑色密封圈，待验收后使用，如无公共备件或其它产线备件更换，可提前换上使用。 <br>
+                                                            5 如该问题当班发生2次及以上，需要找TEF利用停机时间清洁Res3OS(507)通道过滤芯，如未清洁，要交接下去，并上报工程师。 "
+                                             data-root-cause="工装PRV口粘铝丝<br>
+                                                              密封圈损坏 ">
+                                            <i class="fas fa-file-medical"></i>
+                                  <span class="node-text">
+                                    dPRes3OS2_2B_IPB 超上限<br>
+                                    gPRes3OS2_2B_IPB 超上限<br><strong>
+                                    dPRes3OS3_2B_IPB 超上限⭐<br>
+                                    gPRes3OS3_2B_IPB 超上限⭐</strong><br>
+                                    gPRes3PRV2_2B_IPB 超下限<br>
+                                    dPRes3PRV2_2B_IPB 超下限<br>
+                                    gPA32_2B_IPB 超下限<br>
+                                    gPA42_2B_IPB 超下限<br>
+                                    dPA32_2B_IPB 超下限<br>
+                                    dPA42_2B_IPB 超下限<br>
+                                    其中：<br><strong>
+                                    gPRes3OS3_2B_IPB 超上限⭐<br>
+                                    dPRes3OS3_2B_IPB 超上限⭐<br></strong>
+                                    和铝丝强相关，如果是铝丝的问题，这2项里至少会有1项。
+                                  </span>
+                                        </div>
+                                    </li>
+                         
+                        </ul>
+                    </li>
+                          <!-- 2 工装/高压阀/O型圈 问题  -->
+                    <li>
+                        <div class="node" data-node="equipment-issues">
+                            <i class="fas fa-folder"></i>
+                            <span class="node-text">⭐工装/高压阀/O型圈</span>
+                        </div>
+                        <ul>
+                          <!-- 1 -->
+                            <li>
+                                <div class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="1.优先更换WC工装，再更换Res工装<br>
+                                                            （更换Res工装如失效项发生明显变化，需要再更换一次备件工装(公共备件或其它产线备件)，优先使用验收过的工装，同时清洁Res工装在设备上的安装孔） <br>
+                                                            2.盲板检查503或504和508 通道泄漏，那个通道漏量大，先解决该通道密封性 <br>
+                                                            3.如盲板测试无泄漏，则更换508高压阀底座的O型圈（F02E.ST0.101,线边备件盒） "
+                                             data-root-cause="1.工装泄漏 <br>
+                                                              2.503/504/508高压阀其中某个高压阀泄漏 <br>
+                                                              3.508高压阀底座密封圈损坏<br>
+                                                              备注：<br>
+                                                              1 PRV外泄，不仅仅是PRV口的泄漏，A3/A4口泄漏表现出来的不良也有可能是PRV口 <br>
+                                                              2 如果PRV和A3/A4同时出现外泄，则优先处理A3/A4的问题 ">
+                                            <i class="fas fa-file-medical"></i>
+                                  <span class="node-text">
+                                    gPRes3PRV2_2B_IPB 超下限<br>
+                                    dPRes3PRV2_2B_IPB 超下限<br>
+                                    gPA32_2B_IPB 超下限<br>
+                                    gPA42_2B_IPB 超下限<br>
+                                    dPA32_2B_IPB 超下限<br>
+                                    dPA42_2B_IPB 超下限
+                                  </span>
+                                        </div>
+                                    </li>
+                          <!-- 2 -->
+                            <li>
+                                <div class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="1.优先更换WC工装，再更换Res工装 <br>
+                                                            （更换Res工装如失效项发生明显变化，需要再更换一次备件工装(公共备件或其它产线备件)，优先使用验收过的工装，同时清洁Res工装在设备上的安装孔） <br>
+                                                            2.盲板检查有508 通道，如有泄漏更换508高压阀 <br>
+                                                            3.如盲板检查无泄漏，更换508高压阀安装块底座O型圈（F02E.ST0.101,线边备件盒）<br>
+                                                            <strong>除FTA内容和正常保养要求更换508高压阀底座O型圈之外，其他需要测试工程师同意</strong> "
+                                             data-root-cause="1 工装泄漏<br>
+                                                              2 高压阀泄漏<br>
+                                                              3 O型圈泄漏 ">
+                                            <i class="fas fa-file-medical"></i>
+                                  <span class="node-text">
+                                    gPRes3PRV2_2B_IPB 超下限<br>
+                                    dPRes3PRV2_2B_IPB 超下限<br>
+                                    上面两项或只有其中1项且盲板测试无泄漏
+                                  </span>
+                                        </div>
+                                    </li>
+                         
+                        </ul>
+                    </li>
+                          <!-- 3 FailureMemory  -->
+                         <li>
+                                <div id="image" class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="1.查看不良件是否有RPS<br>
+                                                            若无RPS查看C20监控，寻找到掉落的RPS并查找掉落的原因，若有RPS执行后续措施 <br>
+                                                            2.更换Coil unit，若有效，线下更换换下的Coil unit的马达电源/RPS/PS/LIPS的连接pin <br>
+                                                            3.更换新Dummy ECU (无须关机直接更换)<br>
+                                                            更换Dummy ECU后若出现：<br>
+                                                            Gear_Ratio_ECU<br>
+                                                            PSC_MotorSize_ECU <br>
+                                                            等报错，需要关机重启<br>
+                                                            4 更换并清洁Dummy ECU端的连接pin，位置如下图<br>
+                                                            <img src='111.png' width='180' height='180'>
+                                                            5 检查并整理Dummy ECU与Coil工装之间线缆，检查线缆插头<br>
+                                                            <strong>A3 C46 比较特殊，需要优先更换Dummy ECU，同时关机重启。</strong> "
+                                             data-root-cause="1.RPS掉落<br>
+                                                              2.马达电源Pin卡涩，通讯不良 <br>
+                                                              3.与Dummy ECU通讯不良<br>
+                                                              <p style='color:red'>
+                                                              备注：Dummy ECU更换前需下电，操作步骤见dummy ecu更换流程</p>">
+                                            <i class="fas fa-file-medical"></i>
+                                  <span class="node-text">
+                                    ⭐TS_ECU_FailureMemory<br>
+                                    代码：0002/0020/4002  
+                                  </span>
+                                        </div>
+                                    </li>
+                          <!-- dummy ecu更换流程  -->
+                         <li>
+                                <div id="image" class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="1.进入AutoBlid_IPB界面 <br>
+                                                            <img src='dummyecu1.png' width='360' height='180'>
+                                                            2.查看该界面的按钮是否被点亮，如下图则表示上电状态<br>
+                                                            <img src='dummyecu2.png' width='360' height='180'>
+                                                            3.点击被点亮的按钮，保持与下图相同的界面，则为下电状态 ，然后更换dummy ECU <br>
+                                                            <img src='dummyecu3.png' width='360' height='180'>"
+                                             data-root-cause="1.RPS掉落<br>
+                                                              2.马达电源Pin卡涩，通讯不良 <br>
+                                                              3.与Dummy ECU通讯不良<br>
+                                                              **备注：Dummy ECU更换前需下电，操作步骤见FTA">
+                                            <i class="fas fa-file-medical"></i>
+                                  <span class="node-text">
+                                    dummy ecu更换流程  
+                                  </span>
+                                        </div>
+                                    </li>
+                        </ul>
+                    </li>
+                    <!-- 原材料问题 -->
+                    <li>
+                        <div class="node" data-node="material-issues">
+                            <i class="fas fa-folder"></i>
+                            <span class="node-text">原材料</span>
+                        </div>
+                        <ul>
+                          <!-- 原材料 1 -->
+                          <li>
+                                        <div class="node fault-node" data-node="ps-offset-measures"
+                                             data-measures="1 联系质量技术原查看PSMC1是否有损伤 <br>
+                                                            2 如有损伤立刻调监控排查C40装配有无异常，并将调查结果分享到群里 <br>
+                                                            3 要求质量技术员汇报给质量工程师 "
+                                             data-root-cause="来料异常 ">
+                                            <i class="fas fa-file-medical"></i>
+                                            <span class="node-text">PSMC1_2C_IPB</span>
+                                        </div>
+                                    </li>
+                          <!-- 原材料 2 -->
+                          <li>
+                            <div class="node fault-node" data-node="ps-offset-measures"
+                                             data-measures="有且仅有这6个值同时超下限(Gl_Err_Text报错项可以忽略)，以下措施需要立刻执行同时上报工程师和现场质量 <br>
+                                                            1.master件和盲件测试设备有无泄漏 <br>
+                                                            2.收集报废件拿到其他产线测试 <br>
+                                                            3.若其他产线复测也是相同的报废项，将报废件交给质量做气泡实验，检测是否有PS压力传感器泄漏 <br>
+                                                            4.同时需要检查40工位冲压PS有无异常 "
+                                 data-root-cause="C40 PS冲压点位偏移  ">
+                              <i class="fas fa-file-medical"></i>
+                              <span class="node-text">
+                                gPA32_2B_IPB<br>
+                                gPA42_2B_IPB<br>
+                                dPA32_2B_IPB<br>
+                                gPRes3PRV2_2B_IPB<br>
+                                dPA42_2B_IPB<br>
+                                dPRes3PRV2_2B_IPB
+                              </span>
+                            </div>
+                          </li>
+                         
+                      </ul>
+                            </li>
+                  <!-- 工装/设备问题  -->
+                    <li>
+                        <div class="node" data-node="equipment-issues">
+                            <i class="fas fa-folder"></i>
+                            <span class="node-text">工装/设备 </span>
+                        </div>
+                        <ul>
+                          <!-- 1 -->
+                            <li>
+                                <div class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="1 如果工装在测试位没有动作，取出工装后工艺打磨底板导向Pin及底板两侧边缘(与轨道配合处) <br>
+                                                            2 如果工装出来一半卡在出口处，联系TEF排查内外轨道是否对齐（X方向/Z方向），如有异常，开OPL并注明问题。 <br>
+                                                            3 如频繁发生（当班发生2次及以上）升级汇报 "
+                                             data-root-cause="工装/设备异常">
+                                            <i class="fas fa-file-medical"></i>
+                                            <span class="node-text">卡工装 </span>
+                                        </div>
+                                    </li>
+                         
+                        </ul>
+                  </li>
+                  <!-- 设备问题 -->
+                    <li>
+                        <div class="node" data-node="equipment-issues">
+                            <i class="fas fa-folder"></i>
+                            <span class="node-text">设备</span>
+                        </div>
+                        <ul>
+                          <!-- 设备 1 -->
+                            <li>
+                                <div class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="为避免撞机，应先开门扶正问题WPC或产品，确保没有撞机风险再复位或移动轴。 "
+                                             data-root-cause="设备异常 ">
+                                            <i class="fas fa-file-medical"></i>
+                                            <span class="node-text">WPC或产品歪斜 </span>
+                                        </div>
+                                    </li>
+                          <!-- 设备 2-->
+                            <li>
+                                <div class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="*发生第1次，通知TEF准备，当班发生第2次时执行如下措施： <br>
+                                                            1 调低lifter速度 <br>
+                                                            2 将WPC感应传感器向远离lifter方向调整（适用SCU3） <br>
+                                                            3 工艺安装行车记录仪（如有监控可跳过此步） <br>
+                                                            *如无效，联系TEF利用停机时间检查 SCU X方向的位置，检查挡块位置。 <br>
+                                                            后续： <br>
+                                                            更换整套Lifter "
+                                             data-root-cause="设备问题">
+                                            <i class="fas fa-file-medical"></i>
+                                            <span class="node-text">卡架子 </span>
+                                        </div>
+                                    </li>
+                          <!-- 设备 3 -->
+                            <li>
+                                <div class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="1.首先在Mpad上需要检查<strong>EtherCATDiagnose和PnozEVO01（包括Zone0/1）界面</strong>并拍照（拍照必须在关机重启之前做，强制性要求） <br>
+                                                            2.根据收集的信息判断出是EtherCAT还是Pilz报警，切勿盲目关机重启 <br>
+                                                            3.如果是EtherCAT报警，根据EtherCATDiagnose报错内容找到对应的连接线和模块 <br>
+                                                            4.如果是Pilz报警，根据Zone0和Zone1报错内容检查对应的安全门&模块&spindle轴sensor "
+                                             data-root-cause="设备异常 ">
+                                            <i class="fas fa-file-medical"></i>
+                                            <span class="node-text">安全模块报警（设备没有跳手动）或者设备突然跳手动 </span>
+                                        </div>
+                                    </li>
+                          <!--设备 4-->
+                          <li>
+                                <div id="image" class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="1 关机重启<br>
+                                                            2 如频繁出现，查看曲线<br>
+                                                            1）如2C阶段有压力曲线突降，更换Prokist板卡<br>
+                                                            2）如有压力数值缺失(Excel读取曲线才能发现)，需要更换HBM主机
+                                                            <img src='quxian.png' width='360' height='180'>"
+                                             data-root-cause="阀开关异常；<br>
+                                                              压力数值读取异常； ">
+                                            <i class="fas fa-file-medical"></i>
+                                  <span class="node-text">
+                                              TfCSV1_2C_IPB<br>
+                                              TfCSV2_2C_IPB<br>
+                                              TfRvMV1A_2C_IPB<br>
+                                              TfRvMV2A_2C_IPB<br>
+                                              TfRvMV3A_2C_IPB<br>
+                                              TfRvMV4A_2C_IPB<br>
+                                              TfRvTSV_2D_IPB<br>
+                                              TrMV1A_2C_IPB<br>
+                                              TrMV2A_2C_IPB<br>
+                                              TrMV3A_2C_IPB<br>
+                                              TrMV4A_2C_IPB<br>
+                                              TrPSV1_2C_IPB<br>
+                                              TrPSV2_2C_IPB<br>
+                                              TrTSV_2D_IPB
+                                  </span>
+                                        </div>
+                                    </li>
+                          <!--设备 5-->
+                            <li>
+                                <div class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="1. 查看SPC FA2 C44/C46 S_GetContactinputrod值是否超控制线，如超联系工程师。<br>
+                                                            2. 清洁RES1/2/3/PRV四个通道的过滤芯 ，无效上报工程师 "
+                                             data-root-cause="滤芯堵塞  ">
+                                            <i class="fas fa-file-medical"></i>
+                                  <span class="node-text">
+                                              gPRes212_2C_IPB 超上限<br>
+                                              gPRes112_2C_IPB 超上限
+                                  </span>
+                                        </div>
+                                    </li>
+                          <!--设备 6 -->
+                            <li>
+                                <div class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="1.检查Res2压力传感器线是否有弯折，如弯折重新理线 <br>
+                                                            2.如无弯折，更换压力传感器线 "
+                                             data-root-cause="传感器线异常 ">
+                                            <i class="fas fa-file-medical"></i>
+                                  <span class="node-text">
+                                              gPRes212_2C_IPB 超上限和下限<br>
+                                              gPRes112_2C_IPB 超上限和下限
+                                  </span>
+                                        </div>
+                                    </li>
+                          <!--设备 7 -->
+                            <li>
+                                <div class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="1.查看mpad上flowchat界面，A1口的压力是否无任何波动 <br>
+                                                            2.插上A1口压力传感器接头 <br>
+                                                            3.无论哪个通道的压力传感器接头掉落，其对应mpad上的数显压力均无波动，且盲件测试时压力无变化- "
+                                             data-root-cause="A1口压力传感器接头掉落<br>
+                                                              或接头松动 ">
+                                            <i class="fas fa-file-medical"></i>
+                                  <span class="node-text">
+                                              PA13_2B_IPB<br>
+                                              PA12_2B_IPB<br>
+                                              PA112_2C_IPB<br>
+                                              PA11_2D_IPB<br>
+                                              PA18_2C_IPB<br>
+                                              PA17_2C_IPB<br>
+                                              PA16_2C_IPB<br>
+                                              PA13_2C_IPB<br>
+                                              等多项A1口的值为0(A2,A3,A4,Res1/2/OS/PRV同理)
+                                  </span>
+                                        </div>
+                                    </li>
+                        </ul>
+                    </li>
+                    <!-- 工装问题 -->
+                    <li>
+                        <div class="node" data-node="tooling-issues">
+                            <i class="fas fa-folder"></i>
+                            <span class="node-text">工装</span>
+                        </div>
+                        <ul>
+                            <!-- 工装 1 -->
+                            <li>
+                                        <div class="node fault-node" data-node="sensor-measures"
+                                             data-measures="1 更换 Coil 工装<br>
+                                                            2 从Coil工装拆下M111B952传感器交由TEF检查，如损坏，TEF领取新备件更换 "
+                                             data-root-cause="Sensor has no low signal">
+                                            <i class="fas fa-file-medical"></i>
+                                          <span class="node-text">
+                                              M111B952 Part in test position<br>
+                                              Sensor has no low signal
+                                          </span>
+                                        </div>
+                            </li>
+                          <!-- 工装 2 -->
+                          <li>
+                            <div class="node fault-node" data-node="sensor-measures"
+                                             data-measures="四个值超下限，更换nipple无效。<br>
+                                                            1.更换WC工装的A1 finger后ok<br>
+                                                            2.优化M134T950Z轴11#点位，3/3.5/4三个点位来回调整，在多次出现2B不良项后没有做过盲件盲板测试<br>
+                                                            3.最终M134M950轴 11#由3调整至2.3后OK "
+                                             data-root-cause="WC工装A1口finger歪斜<br>
+                                                              M134M950轴 11#点位偏下<br>
+                                                              （该问题出现在Nipple涉及变更后，现已切换为老设计的nipple，轴没动过的情况下一般不需要调整点位） ">
+                                            <i class="fas fa-file-medical"></i>
+                              <span class="node-text">
+                                              gPA12_2B_IPB<br>
+                                              gPA22_2B_IPB<br>
+                                              dPA12_2B_IPB<br>
+                                              dPA22_2B_IPB
+                              </span>
+                                        </div>
+                          </li>
+                          <!-- 工装 3 -->
+                          <li>
+                                <div class="node fault-node" data-node="finger-measures"
+                                             data-measures="PS测量值为零。Lips测量值为-2000 <br>
+                                                            1.扩大Coil unit工装的coil面板的连接pin孔 <br>
+                                                            2.另外一种是连接pin的弹簧失效，无法回弹，更换pin "
+                                             data-root-cause="连接pin卡涩 ">
+                                            <i class="fas fa-file-medical"></i>
+                                  <span class="node-text">
+                                    PSMC1_2C_IPB<br>
+                                    SLips1_2C_IPB<br>
+                                    SLips2_2C_IPB
+                                  </span>
+                                </div>
+                            </li>
+                          <!-- 工装 4 -->
+                          <li>
+                                <div class="node fault-node" data-node="finger-measures"
+                                             data-measures="四个值超下限，更换nipple无效。<br>
+                                                            盲件-->盲板测试发现A2口泄漏，更换finger底部密封圈 "
+                                             data-root-cause="换finger底部密封圈磨损 ">
+                                            <i class="fas fa-file-medical"></i>
+                                  <span class="node-text">
+                                    gPA12_2B_IPB<br>
+                                    gPA22_2B_IPB<br>
+                                    dPA12_2B_IPB<br>
+                                    dPA22_2B_IPB
+                                  </span>
+                                </div>
+                            </li>
+                          <!-- 工装 5 -->
+                          <li>
+                                <div class="node fault-node" data-node="finger-measures"
+                                             data-measures="查看Simpleconsole最下面的Test Time值变大 <br>
+                                                            查看Simpleconsole步骤多次出现该步骤，更换新的Dummy ECU即可 <br>
+                                                            PLUNGER_READ_POSITION:**** <br>
+                                                            0000    ABBA <br>
+                                                            sPlungerMoveFinish:**** <br>
+                                                            0000    ABBA <br>
+                                                            sReadPlungerStatus:0000 <br>
+                                                            PLUNGER_READ_POSITION:****<br>
+                                                            0000    ABBA "
+                                             data-root-cause="Dummy ECU异常  ">
+                                            <i class="fas fa-file-medical"></i>
+                                            <span class="node-text">测试时间增加<br>测试超CT</span>
+                                </div>
+                            </li>
+                         
+                        </ul>
+                    </li>
+                  <!-- 高压阀问题 -->
+                    <li>
+                        <div class="node" data-node="equipment-issues">
+                            <i class="fas fa-folder"></i>
+                            <span class="node-text">高压阀</span>
+                        </div>
+                        <ul>
+                          <!--高压阀 1 -->
+                            <li>
+                                <div class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="值超上限，更换Y507阀 "
+                                             data-root-cause="Y507阀不排气 ">
+                                            <i class="fas fa-file-medical"></i>
+                                            <span class="node-text">gPA24_2C_IPB  </span>
+                                        </div>
+                                    </li>
+                          <!--高压阀 2-->
+                            <li>
+                                <div class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="值超下限,  盲件测试，更换Y502阀 <br>
+                                                            值超下限,  盲件测试，更换Y504阀 "
+                                             data-root-cause="Y502阀排气异常 <br>
+                                                              Y504阀排气异常 ">
+                                            <i class="fas fa-file-medical"></i>
+                                  <span class="node-text">
+                                    gPA26_2C_IPB<br>
+                                    gPA46_2C_IPB
+                                  </span>
+                                        </div>
+                                    </li>
+                          <!--高压阀 3-->
+                          <li>
+                                <div class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="更换Y507高压阀 "
+                                             data-root-cause="Y507阀异常 ">
+                                            <i class="fas fa-file-medical"></i>
+                                            <span class="node-text">SDPRes3OS_SST_IPB </span>
+                                        </div>
+                                    </li>
+                          <!--高压阀 4 ？-->
+                            <li>
+                                <div class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="盲件验证Y504高压阀泄漏，更换阀 "
+                                             data-root-cause="Y504高压阀泄漏 ">
+                                            <i class="fas fa-file-medical"></i>
+                                  <span class="node-text">
+                                    gPA32_2B_IPB<br>
+                                    gPRes3PRV2_2B_IPB<br>
+                                    dPA42_2B_IPB<br>
+                                    dPRes3PRV2_2B_IPB<br>
+                                    （FTA已删除）
+                                  </span>
+                                        </div>
+                                    </li>
+                         
+                        </ul>
+                  </li>
+                  <!-- 工装/高压阀 -->
+                    <li>
+                        <div class="node" data-node="equipment-issues">
+                            <i class="fas fa-folder"></i>
+                            <span class="node-text">工装/高压阀 </span>
+                        </div>
+                        <ul>
+                          <!--工装/高压阀 1 -->
+                            <li>
+                                <div class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="1.优先更换WC工装，如果卡工装导致无法更换，需要敲击锁紧气缸后更换WC工装 <br>
+                                                            2.盲板验证 <br>
+                                                            3.盲板验证OK，继续更换WC工装，盲板验证NOK更换阀 <br>
+                                                            4.更换Y501阀 <br>
+                                                            Tip:根据盲板验证结果更换对应的阀或者密封圈 "
+                                             data-root-cause="工装/高压阀异常 ">
+                                            <i class="fas fa-file-medical"></i>
+                                  <span class="node-text">
+                                    dPA12_2B_IPB<br>
+                                    dPA22_2B_IPB
+                                  </span>
+                                        </div>
+                                    </li>
+                          <!--工装/高压阀 2-->
+                            <li>
+                                <div class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="1 更换Res油壶工装 <br>
+                                                            2 盲板测试 <br>
+                                                            查看Res2有无泄漏-更换506高压阀 <br>
+                                                            查看Res2是否能快速升到4.5bar或无法达到4.5bar-更换206高压阀 "
+                                             data-root-cause="油壶工装 <br>
+                                                              506高压阀泄漏 <br>
+                                                              206高压阀打开异常 ">
+                                            <i class="fas fa-file-medical"></i>
+                                  <span class="node-text">
+                                    PRes22_2B_IPB<br>
+                                    PRes23_2B_IPB<br>
+                                    低于下限
+                                  </span>
+                                        </div>
+                                    </li>
+                          <!--工装/高压阀 3-->
+                          <li>
+                                <div class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="1 更换Res油壶工装 <br>
+                                                            2 更换506高压阀 "
+                                             data-root-cause="工装/高压阀异常 ">
+                                            <i class="fas fa-file-medical"></i>
+                                            <span class="node-text">gPRes22_2B_IPB 超下限   </span>
+                                        </div>
+                                    </li>
+                        </ul>
+                    </li>
+                  <!-- 工装/高压阀/电磁阀  -->
+                    <li>
+                        <div class="node" data-node="equipment-issues">
+                            <i class="fas fa-folder"></i>
+                            <span class="node-text">工装/高压阀/电磁阀</span>
+                        </div>
+                        <ul>
+                          <!-- 1 -->
+                            <li>
+                                <div class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="更换油壶工装 <br>
+                                                            更换505高压阀 <br>
+                                                            更换505电磁阀 "
+                                             data-root-cause="油壶工装Res1口泄漏 <br>
+                                                              高压阀泄漏 <br>
+                                                              电磁阀泄漏 ">
+                                            <i class="fas fa-file-medical"></i>
+                                  <span class="node-text">
+                                    gPRes12_2B_IPB<br>
+                                    dPRes12_2B_IPB
+                                  </span>
+                                        </div>
+                                    </li>
+                         
+                        </ul>
+                  </li>
+                  <!-- 油壶工装/铝丝/高压阀   -->
+                    <li>
+                        <div class="node" data-node="equipment-issues">
+                            <i class="fas fa-folder"></i>
+                            <span class="node-text">油壶工装/铝丝/高压阀 </span>
+                        </div>
+                        <ul>
+                          <!-- 1 -->
+                            <li>
+                                <div class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="1 待复测件流转下去，再点Auto stop 开门 <br>
+                                                            2 更换油壶工装 <br>
+                                                            （更换Res工装如失效项发生变化，需要再更换一次备件工装(公共备件或其它产线备件)，优先使用验收过的工装，同时清洁Res工装在设备上的安装孔） <br>
+                                                            3 第1次换下的油壶工装，更换Res3蓝色密封圈后必须验收通过才能使用，如验收不过，交接TEF维修。 <br>
+                                                            4 更换507高压阀 "
+                                             data-root-cause="Res工装上Res3蓝色密封圈粘铝丝或损坏<br>
+                                                              高压阀  ">
+                                            <i class="fas fa-file-medical"></i>
+                                  <span class="node-text">
+                                    dPRes3OS2_2B_IPB 超下限<br>
+                                    gPRes3OS2_2B_IPB 超下限<br>
+                                    dPRes3OS3_2B_IPB 超下限<br>
+                                    gPRes3OS3_2B_IPB 超下限
+                                  </span>
+                                        </div>
+                                    </li>
+                         
+                        </ul>
+                    </li>
+                  <!-- 工装/电磁阀/高压比例阀 问题  -->
+                    <li>
+                        <div class="node" data-node="equipment-issues">
+                            <i class="fas fa-folder"></i>
+                            <span class="node-text">工装/电磁阀/高压比例阀 </span>
+                        </div>
+                        <ul>
+                          <!-- 1 -->
+                            <li>
+                                <div class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="1 更换WC工装 <br>
+                                                            2 更换Y502电磁阀（根据实际来定，发现哪个通道值最小，更换哪个通道电磁阀，如果看不出哪个通道值最小，测试电磁阀） <br>
+                                                            3 如各通道P值均明显低于56bar，更换高压比例阀 "
+                                             data-root-cause="Y502 电磁阀损坏 <br>
+                                                              Y504 电磁阀响应慢 ">
+                                            <i class="fas fa-file-medical"></i>
+                                  <span class="node-text">
+                                    PA17_2C_IPB<br>
+                                    PA27_2C_IPB<br>
+                                    PA37_2C_IPB<br>
+                                    PA47_2C_IPB<br>
+                                    TfRvMV4A_2C_IPB（电磁阀响应慢）
+                                  </span>
+                                        </div>
+                                    </li>
+                         
+                        </ul>
+                    </li>
+                  <!-- 滤芯  问题 -->
+                    <li>
+                        <div class="node" data-node="equipment-issues">
+                            <i class="fas fa-folder"></i>
+                            <span class="node-text">滤芯</span>
+                        </div>
+                        <ul>
+                          <!-- 1 -->
+                         
+                            <li>
+                                <div class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="更换PRV通道滤芯（此措施有效性待定，暂不执行） <br>
+                                                            除FTA内容和正常保养要求更换508高压阀底座O型圈之外，其他需要测试工程师同意 "
+                                             data-root-cause="NA">
+                                            <i class="fas fa-file-medical"></i>
+                                  <span class="node-text">
+                                    gPRes3PRV2_2B_IPB 超上限<br>
+                                    dPRes3PRV2_2B_IPB 超上限
+                                  </span>
+                                        </div>
+                                    </li>
+                         
+                        </ul>
+                  </li>
+                  <!-- 高压阀/电磁阀 问题  -->
+                    <li>
+                        <div class="node" data-node="equipment-issues">
+                            <i class="fas fa-folder"></i>
+                            <span class="node-text">高压阀/电磁阀 </span>
+                        </div>
+                        <ul>
+                          <!-- 1 -->
+                            <li>
+                                <div class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="1 更换508高压阀和电磁阀 <br>
+                                                            2 更换508定量阀 "
+                                             data-root-cause="查看曲线为先泄漏再缓慢增加，原因是当电磁阀控制508阀关闭408阀打开时，
+                                                              如果508阀关闭缓慢，则会有少量气体从408泄漏出去，
+                                                              当508关闭后，A3/A4口的高压则会通过PRV溢流到RES3PRV，所以压力会缓慢上涨。">
+                                            <i class="fas fa-file-medical"></i>
+                                  <span class="node-text">
+                                    dPRes3PRV2_2B_IPB 超上限<br>
+                                    gPRes3PRV2_2B_IPB 超上限<br>
+                                    上面两项或只有其中1项
+                                  </span>
+                                        </div>
+                                    </li>
+                         
+                        </ul>
+                    </li>
+                  <!-- 先导气压/工装/高压阀/电磁阀/定量阀 问题  -->
+                    <li>
+                        <div class="node" data-node="equipment-issues">
+                            <i class="fas fa-folder"></i>
+                            <span class="node-text">先导气压/工装/高压阀/电磁阀/定量阀</span>
+                        </div>
+                        <ul>
+                          <!-- 1 -->
+                            <li>
+                                <div class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="确认508电磁阀先导气压，需要调整到7.5bar； <br>
+                                                            更换WC/RES工装；<br>
+                                                            更换508高压阀和电磁阀 <br>
+                                                            更换508定量阀 "
+                                             data-root-cause="508高压阀关闭时响应慢 ">
+                                            <i class="fas fa-file-medical"></i>
+                                  <span class="node-text">
+                                    dPRes3PRV2_2B_IPB 超上限<br>
+                                    gPRes3PRV2_2B_IPB 超上限<br>
+                                    dPA32_2B_IPB 超下限<br>
+                                    gPA32_2B_IPB 超下限<br>
+                                    dPA42_2B_IPB 超下限<br>
+                                    gPA42_2B_IPB 超下限
+                                  </span>
+                                        </div>
+                                    </li>
+                         
+                        </ul>
+                    </li>
+                  <!-- 原材料/工装/高压阀/电磁阀 问题  -->
+                    <li>
+                        <div class="node" data-node="equipment-issues">
+                            <i class="fas fa-folder"></i>
+                            <span class="node-text">原材料/工装/高压阀/电磁阀</span>
+                        </div>
+                        <ul>
+                          <!-- 1 -->
+                            <li>
+                                <div class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="如两台设备都有： <br>
+                                                            1.更换VH批次 <br>
+                                                            2.更换的批次需要不同线别的，或者时间差距大点 <br>
+                                                            如只在某一台出现或某一台较多影响产出： <br>
+                                                            1.更换RES工装 <br>
+                                                            2.更换506和206高压阀和电磁阀 <br>
+                                                            4.联系工程师 "
+                                             data-root-cause="VH（FA1)异常 ">
+                                            <i class="fas fa-file-medical"></i>
+                                  <span class="node-text">
+                                    dPRes23_2B_IPB 超上限<br>
+                                    PRes22_2B_IPB 超上限<br>
+                                    或只有<br>
+                                    dPRes23_2B_IPB 超上限
+                                  </span>
+                                        </div>
+                                    </li>
+                         
+                        </ul>
+                    </li>
+                  <!-- 高压比例阀 问题 -->
+                    <li>
+                        <div class="node" data-node="equipment-issues">
+                            <i class="fas fa-folder"></i>
+                            <span class="node-text">高压比例阀 </span>
+                        </div>
+                        <ul>
+                          <!--高压比例阀 1 -->
+                            <li>
+                                <div class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="问题： <br>
+                                                            1 TS_2C_IPB步骤中PA××等多项压力小于60bar； <br>
+                                                            2 设备有明显漏气声音 <br>
+                                                            措施：<br>
+                                                            1.盲板测试，如无异常上报测试工程师<br>
+                                                            2.更换高压比例阀  "
+                                             data-root-cause="高压比例阀异常，60bar气压分配不到位<br>
+                                                              高压比例阀内部o-ring损坏 ">
+                                            <i class="fas fa-file-medical"></i>
+                                  <span class="node-text">
+                                    PA36_2C_IPB<br>
+                                    PA27_2C_IPB<br>
+                                    PA47_2C_IPB<br>
+                                    PA37_2C_IPB<br>
+                                    PA34_2C_IPB<br>
+                                    PA45_2C_IPB<br>
+                                    PA35_2C_IPB<br>
+                                    PA16_2C_IPB<br>
+                                    PA21_2C_IPB<br>
+                                    PA41_2C_IPB<br>
+                                    小于60bar
+                                  </span>
+                                        </div>
+                                    </li>
+                          <!--高压比例阀 2-->
+                            <li>
+                                <div class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="1 调整高压比例阀斜率 <br>
+                                                            2 更换高压比例阀  "
+                                             data-root-cause="高压比例阀调整异常 ">
+                                            <i class="fas fa-file-medical"></i>
+                                  <span class="node-text">
+                                    包含以下现象 <br>
+                                    1.TS_2C_IPB步骤中PA××等多项压力超出60bar<br>
+                                    2.测试曲线异常
+                                  </span>
+                                        </div>
+                                    </li>
+                          <!--高压比例阀 3-->
+                          <li>
+                                <div class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="调整高压比例阀生产，最终更换高压比例阀 "
+                                             data-root-cause="高压比例阀调整异常 ">
+                                            <i class="fas fa-file-medical"></i>
+                                            <span class="node-text">PA14_SST_IPB </span>
+                                        </div>
+                                    </li>
+                        </ul>
+                    </li>
+                  <!-- FailureMemory -->
+                    <li>
+                        <div class="node" data-node="equipment-issues">
+                            <i class="fas fa-folder"></i>
+                            <span class="node-text">FailureMemory </span>
+                        </div>
+                        <ul>
+                          <!-- 1 -->
+                          <!-- 2-->
+                            <li>
+                                <div class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="不是连续发生，无需动作 "
+                                             data-root-cause="PRS本身传感器问题 ">
+                                            <i class="fas fa-file-medical"></i>
+                                  <span class="node-text">
+                                    TS_ECU_FailureMemory<br>
+                                    代码：0400
+                                  </span>
+                                        </div>
+                                    </li>
+                          <!-- 3-->
+                          <li>
+                                <div class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="间断发生，偶尔会报废，更换Dummy ECU  "
+                                             data-root-cause="Dummy ECU Pin异常 ">
+                                            <i class="fas fa-file-medical"></i>
+                                  <span class="node-text">
+                                    TS_ECU_FailureMemory<br>
+                                    代码：0008
+                                  </span>
+                                        </div>
+                                    </li>
+                          <!-- 4-->
+                          <!-- 5 -->
+                            <li>
+                                <div class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="更换Coil unit，并查看excel failure memory，确认哪个磁阀线圈有问题后，更换线圈及其连接pin "
+                                             data-root-cause="Coil Unit线圈损坏  ">
+                                            <i class="fas fa-file-medical"></i>
+                                  <span class="node-text">
+                                    TS_ECU_FailureMemory<br>
+                                    代码：0000/0010
+                                  </span>
+                                        </div>
+                                    </li>
+                          <!-- 6 -->
+                            <li>
+                                <div class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="1.查看产品的马达pin是否歪斜 <br>
+                                                            2.产品无异常，更换Coil 马达连接pin  "
+                                             data-root-cause="产品马达连接pin歪斜 ">
+                                            <i class="fas fa-file-medical"></i>
+                                  <span class="node-text">
+                                    TS_ECU_FailureMemory<br>
+                                    代码：000A
+                                  </span>
+                                        </div>
+                                    </li>
+                           <!-- 7 -->
+                            <li>
+                                <div class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="1.连续出现FailureMemory不良<br>
+                                                            2.用电脑将spindle轴移到原点，如无效再关机重启 "
+                                             data-root-cause="spindle轴死机 ">
+                                            <i class="fas fa-file-medical"></i>
+                                  <span class="node-text">
+                                    TS_ECU_FailureMemory（无代码）<br>
+                                    Result text：<br>
+                                    TS2000_move_foreward_to_Stroke: error f_max
+                                  </span>
+                                        </div>
+                                    </li>
+                           <!-- 8 -->
+                            <li>
+                                <div class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="1 如连续出现，需先重启设备；<br>
+                                                            2 更换Coil工装；<br>
+                                                            3 更换Dummy ECU "
+                                             data-root-cause="ECU连接不上  ">
+                                            <i class="fas fa-file-medical"></i>
+                                  <span class="node-text">
+                                    TS_ECU_FailureMemory<br>
+                                    Error: switching valves not possible - lost communication to ECU<br>
+                                    代码：无
+                                  </span>
+                                        </div>
+                                    </li>
+                           <!-- 9 -->
+                            <li>
+                                <div class="node fault-node" data-node="stuck-tooling-measures"
+                                             data-measures="更换Dummy ECU注意事项： <br>
+                                                            1 检查两个定位Pin，看是否回弹； <br>
+                                                            2 若出现左侧的失效项，关机重启 "
+                                             data-root-cause="NA">
+                                            <i class="fas fa-file-medical"></i>
+                                  <span class="node-text">
+                                    Gear_Ratio_ECU<br>
+                                    PSC_MotorSize_ECU
+                                  </span>
+                                        </div>
+                                    </li>
+                        </ul>
+                    </li>
+                  <!-- TKOMM_ECU9   -->
+                    <li>
+                        <div class="node" data-node="equipment-issues">
+                            <i class="fas fa-folder"></i>
+                            <span class="node-text">TKOMM_ECU9 </span>
+                        </div>
+                        <ul>
+                          <!-- 1 -->
+                            <li>
+                                <div class="node fault-node" data-node="stuck-tooling-measures"
+                                     data-measures="1 更换Dummy ECU<br>
+                                                    2 断电重启<br>
+                                                    3 查看T002模块Uz指示灯是否亮，不亮需更检查其内部保险丝，同时更换模块<br>
+                                                    4 更换Coil工装 "
+                                             data-root-cause="Dummy ECU损坏<br>
+                                                              T002 模块内部保险丝烧坏 ">
+                                            <i class="fas fa-file-medical"></i>
+                                  <span class="node-text">
+                                    TKOMM_ECU9<br>
+                                    Not Measured! Program abort General Error
+                                  </span>
+                                        </div>
+                                    </li>
+                        </ul>
+                    </li>
+                        </ul>
+            </div>
+           
+            <div class="info-container">
+                <h2 class="section-title"><i class="fas fa-clipboard-list"></i>故障处理信息</h2>
+                <div class="info-display">
+                    <div class="placeholder-text">
+                        <i class="fas fa-hand-pointer"></i>
+                        <p>请从左侧树状图中选择一个故障项</p>
+                    </div>
+                </div>
+              <div class="info-box">
+                    <h3><i class="fas fa-info-circle"></i>注意！</h3>
+                    <p>1. 气动过程如遇列表中未出现的失效，对于2B项，先更换对应的失效口工装，再直接盲板测试阀泄漏</p>
+                    <p>2. 如遇failure memory，列表中未出现的先查看excel failure memory，确认是否是磁阀线圈电阻问题，
+
+如不是更换所Pin </p>
+                  <p>3. 此页面仅作参考，可靠内容见FTA。<br>最新更新于2025.9.7</p>
+                </div>
+              <div class="info-box">
+                    <h4><i class="fas fa-info-circle"></i>使用说明</h4>
+                    <p>1. 点击左侧树状结构中的故障项查看详细信息</p>
+                    <p>2. 点击文件夹图标可展开/折叠子目录</p>
+                    <p id="demo">3. 在搜索框中输入故障类别或失效项可快速定位</p>
+               
+                </div>
+            </div>
+         </body>
+</html>
