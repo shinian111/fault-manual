@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                                 <div class="info-content">
 
-                                    ${Measures}
+                                    ${measures}
 
                                 </div>
 
