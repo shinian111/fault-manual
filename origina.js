@@ -133,8 +133,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <div class="info-section">
 
                                 <h3 class="info-header"><i class="fas fa-tools"></i>维修措施</h3>
-
-                                <div class="info-content">
+                                <div class="info-content">
                                 ${measures}
                                 </div>
 
@@ -147,12 +146,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <h3 class="info-header"><i class="fas fa-search"></i>根本原因</h3>
 
                                 <div class="info-content">
-
-                                ${rootCause}
-
-                                </div>
-
-                            </div>
+                                ${rootCause}
+                                </div>
+                                </div>
 
                             <hr>
 
