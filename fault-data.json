@@ -662,7 +662,7 @@
                             "id": "stuck-tooling-measures-1",
                             "icon": "fas fa-file-medical",
                             "nodeText": "在此网站添加故障内容的方法   ",
-                            "measures": "1.右击fault-data.json文件，选择<i>用记事本编辑</i>(如图)<br><img src='image/others/001.jpg' width='250' height='250'><br>2.键盘按住Ctrl和A，全选记事本内容后复制，浏览器打开网址<a href='https://www.json.cn/jsonedit/'>https://www.json.cn/jsonedit/<a><br>3.将刚刚复制的记事本文本内容粘贴到下图红框内，然后点击<i>解析JSON</i>，确保不报错（如图）<br><img src='image/others/002.jpg' width='250' height='200'><br>4.按上图红色文本框内所述编辑故障文件，需注意：<br>编辑内容时<b>不要回车</b>可以使用<b>'<br>'</b>来表示换行",
+                            "measures": "1.进入<a href='https://github.com/shinian111/fault-manual/'>此网站</a>,点击仓库中的<b>fault-data.json</b>文件<br><img src='image/other/001.png' width='180' height='180'><br>2.进入下图界面后点击右上角三个点，选择下拉菜单中的<b>Download</b><br><img src='image/other/002.png' width='180' height='180'><br>3.在电脑上右击fault-data.json文件，选择<i>用记事本编辑</i><br><img src='image/other/003.png' width='180' height='180'><br>4.❗（不推荐）直接在记事本编辑，编辑结束后将记事本全部内容复制粘贴到<a href='https://www.json.cn/jsononline/'>此网站</a>，确保无报错后保存文件内容❗<br><img src='image/other/004.png' width='180' height='180'><br>5.⭐(推荐做法）浏览器打开<a href='https://www.json.cn/jsonedit/'>网址<a>,全选记事本内容后复制粘贴到网页左侧，然后在右侧编辑内容，编辑完成后点击 <i>保存修改</i> ，然后将左侧内容全选后复制粘贴至记事本保存<br><img src='image/other/005.png' width='180' height='180'><br><p style='color:grey'>6.建议：新增的内容可以在“node text”内容中写入红色加粗的<p style='color:red'><b>NEW</b><p>，但是前提是在记事本中已经搜索了所有的new并替换为空了。</p><br><p style='color:red'>注意事项：①编辑双引号内文本时可以使用特殊符号和标记，比如⭐/❗等，但不能回车/换行，否则会导致文件格式解析错误<br>②除双引号内文本，其他符号都必须使用英文符号<br>③想要优化文本格式可以参照下图<br></p><img src='image/other/006.png' width='180' height='180'><br>",
                             "rootCause": "原因（***） "
                         }
                     ]
@@ -672,3 +672,4 @@
     ]
 
 }
+
