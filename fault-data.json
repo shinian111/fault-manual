@@ -655,22 +655,22 @@
             "icon": "fas fa-folder",
             "subcategories": [
                 {
-                    "name": "更改此网站故障内容的方法  ",
+                    "name": "更改此网站故障内容的方法  ",
                     "icon": "fas fa-folder",
                     "faults": [
                         {
                             "id": "stuck-tooling-measures-1",
                             "icon": "fas fa-file-medical",
-                            "nodeText": "批量导入故障的方法   ",
-                            "measures": "1.将故障放在excel中编辑，完成后将excel另存为<b>csv</b>格式<br><img src='image/other/006.png' width='180' height='180'><br>2.进入<a href='https://github.com/shinian111/fault-manual/'>此网站</a>，点击<b>File</b>，将刚刚的文件上传到网站中，网站右侧会自动出现解析后的内容<br><img src='image/other/007.png' width='180' height='180'><br>3.将右侧内容全选后粘贴到记事本中，使用<b>搜索/替换</b>将文本更改到合适的格式，最后保存为<b>fault-data.json</b><br><img src='image/other/008.png' width='180' height='180'><br>",
-                            "rootCause": "原因（***） "
+                            "nodeText": "批量导入故障的方法   ",
+                            "measures": "1.将故障放在excel中编辑，完成后将excel另存为<b>csv</b>格式<br><p style='color:red'>*注意❗excel格式为四列，内容依次为 <i>故障类别</i>/<i>故障内容</i>/<i>维修措施</i>/<i>根本原因</i>，同时每个大类（比如不同工站）单独做表</p><br><img src='image/other/006.png' width='480' height='299'><br>2.进入<a href='https://codebeautify.org/csv-to-json-converter#'>此网站</a>，点击<b>File</b>，将刚刚的文件上传到网站中，网站右侧会自动出现解析后的内容<br><img src='image/other/007.png' width='480' height='274'><br>3.将右侧内容全选后粘贴到记事本中，使用<b>搜索/替换</b>将文本更改到合适的格式，最后保存为<b>fault-data.json</b><br><img src='image/other/008.png' width='480' height='343'><br>",
+                            "rootCause": "原因（***） "
                         },
                         {
                             "id": "stuck-tooling-measures-1",
                             "icon": "fas fa-file-medical",
-                            "nodeText": "微调或变更结构的方法   ",
-                            "measures": "1.进入<a href='https://github.com/shinian111/fault-manual/'>此网站</a>,点击仓库中的<b>fault-data.json</b>文件<br><img src='image/other/001.png' width='180' height='180'><br>2.进入下图界面后全选文件内容并复制<br><img src='image/other/002.png' width='180' height='180'><br>3.浏览器打开<a href='https://www.json.cn/jsonedit/'>此网址<a>,将刚刚复制的文本内容粘贴到网页左侧，然后在右侧编辑内容，编辑完成后点击 <i>保存修改</i> <br><img src='image/other/003.png' width='250' height='230'><br>4.保存修改后左侧文本会变更为修改后的内容，将此处文本内容全选，复制粘贴到记事本并保存为<b>fault-data.json</b><br><img src='image/other/004.png' width='180' height='180'><br><p style='color:grey'>*建议：新增的内容可以在“node text”内容中写入红色加粗的</p><p style='color:red'><b>NEW</b></p><p style='color:grey'>，但是前提是在记事本中已经搜索了所有的new并替换为空了。</p><br><p style='color:red'>*注意事项：①编辑双引号内文本时可以使用特殊符号和标记，比如⭐/❗等，但不能回车/换行，否则会导致文件格式解析错误<br>②除双引号内文本，其他符号都必须使用英文符号<br>③想要优化文本格式可以参照下图<br></p><img src='image/other/005.png' width='180' height='180'><br>",
-                            "rootCause": "原因（***） "
+                            "nodeText": "微调或变更结构的方法   ",
+                            "measures": "1.进入<a href='https://github.com/shinian111/fault-manual/'>此网站</a>,点击仓库中的<b>fault-data.json</b>文件<br><img src='image/other/001.png' width='480' height='292'><br>2.进入下图界面后全选文件内容并复制<br><img src='image/other/002.png' width='480' height='248'><br>3.浏览器打开<a href='https://www.json.cn/jsonedit/'>此网址<a>,将刚刚复制的文本内容粘贴到网页左侧，然后在右侧编辑内容，编辑完成后点击 <i>保存修改</i> <br><img src='image/other/003.png' width='480' height='329'><br>4.保存修改后左侧文本会变更为修改后的内容，将此处文本内容全选，复制粘贴到记事本并保存为<b>fault-data.json</b><br><img src='image/other/004.png' width='480' height='331'><br><p style='color:grey'>*建议：新增的内容可以在“node text”内容中写入红色加粗的</p><p style='color:red'><b>NEW</b></p><p style='color:grey'>，但是前提是在记事本中已经搜索了所有的new并替换为空了。</p><br><p style='color:red'>*注意事项：①编辑双引号内文本时可以使用特殊符号和标记，比如⭐/❗等，但不能回车/换行，否则会导致文件格式解析错误<br>②除双引号内文本，其他符号都必须使用英文符号<br>③想要优化文本格式可以参照下图<br></p><img src='image/other/005.png' width='480' height='330'><br>",
+                            "rootCause": "原因（***） "
                         }
                     ]
                 }
